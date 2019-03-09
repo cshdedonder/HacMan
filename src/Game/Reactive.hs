@@ -8,8 +8,8 @@ import           Graphics.Gloss.Interface.IO.Game (Event (EventKey), Key,
 import           Data.World
 
 handle :: Event -> World -> IO World
-handle (EventKey x Down _ _) = return . handleKeys x
-handle _                     = return
+handle (EventKey key Down _ _) = return . handleKeys key
+handle _                       = return
 
 handleKeys :: Key -> World -> World
-handleKeys = undefined
+handleKeys = undefined -- TODO
