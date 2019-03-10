@@ -1,7 +1,12 @@
-module Game.Engine (newWorld, tick,simulationRes) where
+module Game.Engine
+  ( newWorld
+  , tick
+  , simulationRes
+  ) where
 
-import Data.World
-import Config.Configuration (Config, readConfig, getData')
+import qualified Config.GameConfig as Conf
+import           Data.World
+import           Paths_HacMan
 
 newWorld :: IO World
 newWorld = undefined -- TODO
@@ -9,10 +14,10 @@ newWorld = undefined -- TODO
 simulationRes :: IO Int
 simulationRes = do
   cfg <- config
-  return $ getData' cfg "simulation.resolution" 20
+  return $ Conf.simulationResolution . Conf.engine $ cfg
 
 tick :: Float -> World -> IO World
 tick = undefined -- TODO
 
-config :: IO Config
-config = readConfig "engine.config"
+config :: IO Conf.GameConfig
+config = Conf.readGameConfig

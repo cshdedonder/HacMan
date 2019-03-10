@@ -1,0 +1,7 @@
+engine:
+  simulationResolution: 20
+window:
+  width: 800
+  height: 800
+  posX: 100
+  posY: 100

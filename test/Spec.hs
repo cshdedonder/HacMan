@@ -1,2 +1,8 @@
+import qualified Game.EngineTest as EngineTest
+
+import Test.HUnit
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do
+  _ <- runTestTT EngineTest.tests
+  return ()
