@@ -1,6 +1,11 @@
 module Data.Entity where
 
-type Position = (Int, Int)
+import           Data.Position
+
+data Entity =
+  Entity
+
+type Entities = [Entity]
 
 data Orientation
   = North

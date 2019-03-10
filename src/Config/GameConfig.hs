@@ -2,41 +2,36 @@
 
 module Config.GameConfig where
 
-import Paths_HacMan
-import Control.Applicative
-import Data.Yaml
+import           Control.Applicative
+import           Data.Yaml
+import           Paths_HacMan
 
-data GameConfig = GameConfig {
-  engine :: EngineConfig,
-  window :: WindowConfig
-} deriving Show
+data GameConfig = GameConfig
+  { engine :: EngineConfig
+  , window :: WindowConfig
+  } deriving (Show)
 
-data EngineConfig = EngineConfig {
-  simulationResolution :: Int
-} deriving Show
+data EngineConfig = EngineConfig
+  { simulationResolution :: Int
+  } deriving (Show)
 
-data WindowConfig = WindowConfig {
-  width :: Int,
-  height :: Int,
-  posX :: Int,
-  posY :: Int
-} deriving Show
+data WindowConfig = WindowConfig
+  { width  :: Int
+  , height :: Int
+  , posX   :: Int
+  , posY   :: Int
+  , title  :: String
+  } deriving (Show)
 
 instance FromJSON GameConfig where
-  parseJSON (Object m) = GameConfig <$>
-    m .: "engine" <*>
-    m .: "window"
+  parseJSON (Object m) = GameConfig <$> m .: "engine" <*> m .: "window"
 
 instance FromJSON EngineConfig where
-  parseJSON (Object m) = EngineConfig <$>
-    m .: "simulationResolution"
+  parseJSON (Object m) = EngineConfig <$> m .: "simulationResolution"
 
 instance FromJSON WindowConfig where
-  parseJSON (Object m) = WindowConfig <$>
-    m .: "width" <*>
-    m .: "height" <*>
-    m .: "posX" <*>
-    m .: "posY"
+  parseJSON (Object m) =
+    WindowConfig <$> m .: "width" <*> m .: "height" <*> m .: "posX" <*> m .: "posY" <*> m .: "title"
 
 readGameConfig :: IO GameConfig
 readGameConfig = do

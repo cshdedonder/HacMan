@@ -1,0 +1,24 @@
+pacman:
+  x: 13.5
+  y: 22
+  lives: 3
+  start: "EAST"
+boardConfig:
+  - pellets: "true"
+    start:
+      x: 1
+      y: 0
+    end:
+      x: 12
+      y: 0
+  - pellets: true
+    start:
+      x: 1
+      y: 0
+    end:
+      x: 1
+      y: 7
+      ---
+      TODO
+      ---
+

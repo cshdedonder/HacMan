@@ -10,13 +10,7 @@ import qualified Game.Render                      as Render
 
 main :: IO ()
 main = do
-  world <- Engine.newWorld
-  res <- Engine.simulationRes
-  playIO
-    Render.display
-    Render.background
-    res
-    world
-    Render.render
-    Reactive.handle
-    Engine.tick
+  initialWorld <- Engine.newWorld
+  resolution <- Engine.simulationRes
+  display <- Render.display
+  playIO display Render.background resolution initialWorld Render.render Reactive.handle Engine.tick
