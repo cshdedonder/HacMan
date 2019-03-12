@@ -14,11 +14,9 @@ import           Config.GameConfig           (WindowConfig, height, posX, posY,
                                               window)
 import           Data.Position
 import           Data.World
-import           Data.World.Wall
 
 render :: World -> IO Picture
-render w = return $ renderWalls (view walls w)
---render = undefined -- TODO
+render w = undefined -- TODO
 
 display :: IO Display
 display = do
@@ -30,12 +28,3 @@ background = black
 
 config :: IO WindowConfig
 config = window <$> readGameConfig
-
-renderWalls :: Walls -> Picture
-renderWalls = Color blue . Pictures . map renderWall
-
-renderWall :: Wall -> Picture
-renderWall w = Line $ mapFunc [view (start . x), view (start . y), view (end . x), view (end . y)] w
-  where mapFunc :: [Wall -> Int] -> Wall -> [(Float, Float)]
-        mapFunc (x:y:ws) w = (fromIntegral . x $ w, fromIntegral . y $ w) : mapFunc ws w
-        mapFunc [] _ = []

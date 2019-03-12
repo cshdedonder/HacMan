@@ -1,0 +1,32 @@
+{
+  "pacManConfig": {
+    "x": 13.5,
+    "y": 22,
+    "lives": 3,
+    "start": "East"
+  },
+  "levelConfig": [
+    {
+      "level": 1,
+      "fruit": "Cherry",
+      "vulnerable": 6,
+      "warning": 5
+    }
+  ],
+  "stateDurationConfig": [
+    {
+      "from": 1,
+      "to": 1,
+      "changes": [
+        {
+          "state": "Scatter",
+          "duration": 7
+        },
+        {
+          "state": "Chase",
+          "duration": 20
+        }
+      ]
+    }
+  ]
+}

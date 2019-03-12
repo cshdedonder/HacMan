@@ -4,23 +4,25 @@ module Config.GameConfig where
 
 import           Control.Applicative
 import           Data.Yaml
+
+import           Data.World.Board    (Board, fromLists, fromString)
 import           Paths_HacMan
 
 data GameConfig = GameConfig
-  { engine :: EngineConfig
-  , window :: WindowConfig
+  { engine :: !EngineConfig
+  , window :: !WindowConfig
   } deriving (Show)
 
-data EngineConfig = EngineConfig
+newtype EngineConfig = EngineConfig
   { simulationResolution :: Int
   } deriving (Show)
 
 data WindowConfig = WindowConfig
-  { width  :: Int
-  , height :: Int
-  , posX   :: Int
-  , posY   :: Int
-  , title  :: String
+  { width  :: !Int
+  , height :: !Int
+  , posX   :: !Int
+  , posY   :: !Int
+  , title  :: !String
   } deriving (Show)
 
 instance FromJSON GameConfig where
